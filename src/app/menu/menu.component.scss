@@ -1,12 +1,15 @@
-.menu-container {
-  width: 100%;
-  height: 100%;
-  padding: 6px;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.619);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+@import "mixins";
+@import "animations";
 
+.menu-container {
+  @include display-card;
+  animation: 0.5s horizontal-reveal ease-in-out 1s backwards;
+
+  .content {
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 1.5s 1.3s ease backwards;
+  }
   .header {
     width: 100%;
     height: 20%;
