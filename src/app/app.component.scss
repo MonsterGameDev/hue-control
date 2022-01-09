@@ -20,13 +20,11 @@
     height: 85vh;
     width: 90vw;
 
-    border: 2px solid black;
-
     .global-menu {
-      background-color: rgba(21, 219, 21, 0.062);
       height: 100%;
       transition: all 0.3s ease-out;
       width: 20%;
+      padding: 0 5px 0 0;
     }
 
     .output-area {

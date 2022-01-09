@@ -1,13 +1,49 @@
-<div class="menu-containerr">
+<div class="menu-container">
   <div class="header"></div>
   <div class="menu">
     <ul class="menu-list">
-      <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/player">Play</a></li>
-      <li><a routerLink="/create">Create</a></li>
-      <li><a routerLink="/overview">Overview</a></li>
-      <li><a routerLink="/guide">Guide</a></li>
-      <li><a routerLink="/about">About</a></li>
+      <li
+        [routerLinkActive]="['menu-link-active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+      >
+        <a routerLink="/home">Home</a>
+      </li>
+      <li
+        [routerLinkActive]="['menu-link-active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+      >
+        <a routerLink="/player">Play</a>
+      </li>
+      <li
+        [routerLinkActive]="['menu-link-active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+      >
+        <a [routerLink]="['/create']">Create</a>
+      </li>
+      <li
+        [routerLinkActive]="['menu-link-active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+      >
+        <a [routerLink]="['/overview']">Overview</a>
+      </li>
+      <li
+        [routerLinkActive]="['menu-link-active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+      >
+        <a routerLink="/guide">Guide</a>
+      </li>
+      <li
+        [routerLinkActive]="['menu-link-active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item"
+      >
+        <a routerLink="/about">About</a>
+      </li>
     </ul>
   </div>
 </div>
