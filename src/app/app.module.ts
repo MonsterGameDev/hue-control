@@ -22,6 +22,8 @@ import { CreateComponent } from './create/create.component';
 import { OverviewComponent } from './overview/overview.component';
 import { GuideComponent } from './guide/guide.component';
 import { AboutComponent } from './about/about.component';
+import { CardComponent } from './create/card/card.component';
+import { ControlActionsComponent } from './create/control-actions/control-actions.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { AboutComponent } from './about/about.component';
     OverviewComponent,
     GuideComponent,
     AboutComponent,
+    CardComponent,
+    ControlActionsComponent,
   ],
   imports: [
     BrowserModule,
