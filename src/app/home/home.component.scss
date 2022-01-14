@@ -1,5 +1,5 @@
-// @import "mixins";
-// @import "animations";
+@import "index";
+
 @import url("https://fonts.googleapis.com/css2?family=The+Nautigal&family=Vujahday+Script&display=swap");
 
 .home-container {
@@ -57,7 +57,6 @@
     }
   }
 }
-
 
 @keyframes animated-gradient {
   0% {
