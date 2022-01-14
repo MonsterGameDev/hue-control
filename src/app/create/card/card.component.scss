@@ -1,5 +1,5 @@
-@import "index";
-// @import "animations";
+@import "mixins";
+@import "animations";
 
 .card-container {
   @include display-card;
