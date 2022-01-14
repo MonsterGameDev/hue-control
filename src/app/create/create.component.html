@@ -1,8 +1,18 @@
 <div class="create-container">
-  <div class="player-area"></div>
+  <div class="player-area">
+    <app-edit (progressEmitter)="timeUpdateEvent($event)"></app-edit>
+  </div>
   <div class="content">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <div class="card">
+      <app-card [timeStamp]="timeStamp">
+        <app-control-actions [timeStamp]="timeStamp"></app-control-actions>
+      </app-card>
+    </div>
+    <div class="card">
+      <app-card></app-card>
+    </div>
+    <div class="card">
+      <app-card></app-card>
+    </div>
   </div>
 </div>

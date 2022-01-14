@@ -1,9 +1,9 @@
-@import "mixins";
-@import "animations";
+// @import "mixins";
+// @import "animations";
 
 .menu-container {
   @include display-card;
-  animation: 0.5s horizontal-reveal ease-in-out .3s backwards;
+  animation: 0.5s horizontal-reveal ease-in-out 0.3s backwards;
 
   .content {
     width: 100%;
@@ -29,7 +29,6 @@
       flex-direction: column;
       justify-content: space-evenly;
       min-height: 50%;
-
 
       .menu-item {
         a {
