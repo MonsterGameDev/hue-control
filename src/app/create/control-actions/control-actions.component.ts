@@ -19,10 +19,11 @@ export class ControlActionsComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    const ts: TimeStampObject = changes.timeStamp.currentValue;
-    this.formattedTimeStamp = ts.hh + ':' + ts.mm + ':' + ts.ss;
+    if (changes.timeStamp) {
+      const ts: TimeStampObject = changes.timeStamp.currentValue;
+      if (ts) this.formattedTimeStamp = ts.hh + ':' + ts.mm + ':' + ts.ss;
+    }
   }
 
   ngOnInit(): void {}
-  
 }
