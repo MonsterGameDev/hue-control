@@ -9,3 +9,58 @@
   background-color: $card-background-prinary;
   box-shadow: $drop-shawow-primary;
 }
+
+// BLUE
+@mixin border-glow-blue {
+  border: $glow-blue-border;
+  box-shadow: $glow-blue-shadow-sm;
+}
+@mixin text-glow-blue {
+  color: $blue-dark;
+  text-shadow: $glow-blue-shadow-sm;
+}
+//RED
+@mixin border-glow-red {
+  border: $glow-red-border;
+  box-shadow: $glow-red-shadow-sm;
+}
+@mixin text-glow-red {
+  color: $red-dark;
+  text-shadow: $glow-red-shadow-sm;
+}
+// ORANGE
+@mixin border-glow-orange {
+  border: $glow-orange-border;
+  box-shadow: $glow-orange-shadow-sm;
+}
+@mixin text-glow-orange {
+  color: $orange-dark;
+  text-shadow: $glow-orange-shadow-sm;
+}
+// PINK
+@mixin border-glow-pink {
+  border: $glow-pink-border;
+  box-shadow: $glow-pink-shadow-sm;
+}
+@mixin text-glow-pink {
+  color: $pink-dark;
+  text-shadow: $glow-pink-shadow-sm;
+}
+//GREEN
+@mixin border-glow-green {
+  border: $glow-green-border;
+  box-shadow: $glow-green-shadow-sm;
+}
+@mixin text-glow-green {
+  color: $green-dark;
+  text-shadow: $glow-green-shadow-sm;
+}
+//YELLOW
+@mixin border-glow-yellow {
+  border: $glow-yellow-border;
+  box-shadow: $glow-yellow-shadow-sm;
+}
+@mixin text-glow-yellow {
+  color: $yellow-dark;
+  text-shadow: $glow-yellow-shadow-sm;
+}

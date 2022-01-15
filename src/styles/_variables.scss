@@ -2,3 +2,39 @@ $drop-shawow-primary: rgba(226, 178, 178, 0.35) 0px 5px 15px;
 $card-background-prinary: rgba(0, 0, 0, 0.619);
 $card-border-primary: 2px solid rgb(70, 76, 161);
 $border-radius: 10px;
+
+$blue-dark: rgb(73, 166, 253);
+$blue-light: #9ecaed;
+$glow-blue-border: 2px solid $blue-dark;
+$glow-blue-shadow-sm: 0 0 10px $blue-light;
+$glow-blue-shadow-lg: 0 0 20px $blue-light;
+
+$red-dark: rgb(253, 73, 73);
+$red-light: #ed9e9e;
+$glow-red-border: 2px solid $red-dark;
+$glow-red-shadow-sm: 0 0 10px $red-light;
+$glow-red-shadow-lg: 0 0 20px $red-light;
+
+$orange-dark: rgb(253, 181, 73);
+$orange-light: #edc29e;
+$glow-orange-border: 2px solid $orange-dark;
+$glow-orange-shadow-sm: 0 0 10px $orange-light;
+$glow-orange-shadow-lg: 0 0 20px $orange-light;
+
+$pink-dark: rgb(223, 73, 253);
+$pink-light: #e49eed;
+$glow-pink-border: 2px solid $pink-dark;
+$glow-pink-shadow-sm: 0 0 10px $pink-light;
+$glow-pink-shadow-lg: 0 0 20px $pink-light;
+
+$green-dark: rgb(73, 253, 82);
+$green-light:#a7ed9e;
+$glow-green-border: 2px solid $green-dark;
+$glow-green-shadow-sm: 0 0 10px $green-light;
+$glow-green-shadow-lg: 0 0 20px $green-light;
+
+$yellow-dark: rgb(250, 253, 73);
+$yellow-light: #ede89e;
+$glow-yellow-border: 2px solid $yellow-dark;
+$glow-yellow-shadow-sm: 0 0 10px $yellow-light;
+$glow-yellow-shadow-lg: 0 0 20px $yellow-light;

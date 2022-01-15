@@ -1,34 +1,237 @@
-.btn {
-  &,
-  &:link,
-  &:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1em 1.5em;
-    display: inline-block;
-    border-radius: 10em;
-    transition: all 0.2s;
-    position: relative;
-    font-size: 1.2em;
-    border: none;
-    cursor: pointer;
+@import "mixins";
 
-    &--white {
-      background-color: #fff;
-      color: #666;
-
-      &::after {
-        background-color: #fff;
-      }
-    }
-
-    &--green {
-      background-color: rgb(23, 143, 7);
-      color: #fff;
-
-      &::after {
-        background-color: rgb(23, 143, 7);
-      }
-    }
-  }
+@mixin after-element {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
+
+.btn {
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  display: inline-block;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.75);
+  background-color: transparent;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.border-glow-blue {
+  @include border-glow-blue;
+}
+.border-glow-blue::after {
+  @include after-element;
+  box-shadow: $glow-blue-shadow-lg;
+}
+.border-glow-blue:hover::after {
+  opacity: 1;
+}
+.text-glow-blue {
+  @include text-glow-blue;
+}
+
+.border-glow-red {
+  @include border-glow-red;
+}
+.border-glow-red::after {
+  @include after-element;
+  box-shadow: $glow-red-shadow-lg;
+}
+.border-glow-red:hover::after {
+  opacity: 1;
+}
+.text-glow-red {
+  @include text-glow-red;
+}
+
+.border-glow-orange {
+  @include border-glow-orange;
+}
+.border-glow-orange::after {
+  @include after-element;
+  box-shadow: $glow-orange-shadow-lg;
+}
+.border-glow-orange:hover::after {
+  opacity: 1;
+}
+.text-glow-orange {
+  @include text-glow-orange;
+}
+
+.border-glow-pink {
+  @include border-glow-pink;
+}
+.border-glow-pink::after {
+  @include after-element;
+  box-shadow: $glow-pink-shadow-lg;
+}
+.border-glow-pink:hover::after {
+  opacity: 1;
+}
+.text-glow-pink {
+  @include text-glow-pink;
+}
+
+.border-glow-green {
+  @include border-glow-green;
+}
+.border-glow-green::after {
+  @include after-element;
+  box-shadow: $glow-green-shadow-lg;
+}
+.border-glow-green:hover::after {
+  opacity: 1;
+}
+.text-glow-green {
+  @include text-glow-green;
+}
+
+.border-glow-yellow {
+  @include border-glow-yellow;
+}
+.border-glow-yellow::after {
+  @include after-element;
+  box-shadow: $glow-yellow-shadow-lg;
+}
+.border-glow-yellow:hover::after {
+  opacity: 1;
+}
+.text-glow-yellow {
+  @include text-glow-yellow;
+}
+
+/*GRADIENTS*/
+/*GREEN*/
+.b-green,
+.b-green:before {
+  background: linear-gradient(
+    45deg,
+    rgba(73, 155, 234, 1) 0%,
+    rgba(26, 188, 156, 1) 100%
+  );
+}
+/*PINK*/
+.b-pink,
+.b-pink:before {
+  background: linear-gradient(
+    45deg,
+    rgba(231, 72, 234, 1) 0%,
+    rgba(75, 26, 188, 1) 100%
+  );
+}
+/*RED*/
+.b-red,
+.b-red:before {
+  background: linear-gradient(
+    45deg,
+    rgba(234, 110, 72, 1) 0%,
+    rgba(188, 26, 99, 1) 100%
+  );
+}
+/*ORANGE*/
+.b-orange,
+.b-orange:before {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 193, 7, 1) 0%,
+    rgba(255, 87, 34, 1) 100%
+  );
+}
+/*BLUE*/
+.b-blue,
+.b-blue:before {
+  background: linear-gradient(
+    45deg,
+    rgba(5, 118, 255, 1) 0%,
+    rgba(36, 248, 255, 1) 100%
+  );
+}
+/*END GRADIENTS*/
+/*BASE BUTTON*/
+.button {
+  display: inline-block;
+  position: relative;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 2em;
+  font-weight: bold;
+  transition: all 0.5s;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.button:hover {
+  text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.75);
+}
+
+.button:after {
+  background: #2c3e50;
+}
+.button:hover:after {
+  left: 100%;
+  top: 100%;
+  bottom: 100%;
+  right: 100%;
+}
+.button:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  right: 2px;
+  z-index: -1;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.button2 {
+  display: inline-block;
+  font-size: 2em;
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 5px;
+  transition: all 0.5s;
+  filter: hue-rotate(0deg);
+  color: #fff;
+  text-decoration: none;
+}
+/*END BASE BUTTON*/
+/*ROTATE*/
+.rot-360-noscoop:hover {
+  filter: hue-rotate(360deg);
+  transform: rotate(360deg);
+}
+.rot-135:hover {
+  filter: hue-rotate(135deg);
+}
+.rot-90:hover {
+  filter: hue-rotate(90deg);
+}
+/*END ROTATE*/
