@@ -1,11 +1,19 @@
 <div class="create-container">
   <div class="player-area">
-    <app-edit (progressEmitter)="timeUpdateEvent($event)"></app-edit>
+    <app-edit
+      (progressEmitter)="timeUpdateEvent($event)"
+      [pause]="pause"
+      [play]="play"
+    ></app-edit>
   </div>
   <div class="content">
     <div class="card">
-      <app-card [timeStamp]="timeStamp">
-        <app-control-actions [timeStamp]="timeStamp"></app-control-actions>
+      <app-card>
+        <app-control-actions
+          [timeStamp]="timeStamp"
+          (pauseAudio)="pauseAudio($event)"
+          (playAudio)="playAudio($event)"
+        ></app-control-actions>
       </app-card>
     </div>
     <div class="card">

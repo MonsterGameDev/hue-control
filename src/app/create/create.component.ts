@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TimeStampObject, TimeUpdateObject } from '../+state/app.interfaces';
 
 @Component({
@@ -8,6 +8,9 @@ import { TimeStampObject, TimeUpdateObject } from '../+state/app.interfaces';
 })
 export class CreateComponent implements OnInit {
   timeStamp?: TimeStampObject;
+  play: boolean = false;
+  pause: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -15,5 +18,15 @@ export class CreateComponent implements OnInit {
   timeUpdateEvent(timeUpdateObject: TimeUpdateObject) {
     this.timeStamp = timeUpdateObject.formatted;
     // console.log(this.timeStamp);
+  }
+
+  pauseAudio(e: any) {
+    this.play = false;
+    this.pause = true;
+  }
+
+  playAudio(e: any) {
+    this.play = true;
+    this.pause = false;
   }
 }

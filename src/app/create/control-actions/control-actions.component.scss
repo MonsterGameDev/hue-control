@@ -1,9 +1,92 @@
+@import "variables";
+@import "mixins";
 @import "components";
 
-.button-group {
+.create-container {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+
+  .select-time-stamp {
+    height: 30%;
+    border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .counter {
+      font-size: 80px;
+    }
+
+    .btn {
+      width: 50%;
+      //align-self: center;
+    }
+  }
+
+  .create-time-stamp {
+    height: 68%;
+    border-radius: $border-radius;
+    padding: 20px;
+
+    .form-container {
+      height: 100%;
+      width: 100%;
+
+      form {
+        width: 100%;
+        height: 100%;
+
+        h1 {
+          font-size: 24px;
+          margin: 10px auto;
+          font-weight: normal;
+        }
+        .scene-picker {
+          width: 100%;
+          height: 100px;
+          margin: 20px auto;
+          font-size: 20px;
+        }
+
+        .cta-section {
+          margin-top: 10px;
+          display: flex;
+          justify-content: flex-end;
+          .btn-submit,
+          .btn-reset {
+            margin: 0 10px 0 0;
+          }
+          .btn-reset {
+          }
+        }
+
+        .field-container {
+          width: 100%;
+          .field-area {
+            width: 100%;
+            .field-label {
+              font-size: 18px;
+              display: inline-block;
+              margin-bottom: 0px;
+            }
+            input.field-value {
+              width: 100%;
+              background: transparent;
+              caret-color: $pink-dark;
+              font-size: 32px;
+              padding: 3px;
+            }
+          }
+          .err-container {
+          }
+        }
+      }
+    }
+  }
 }
+
+// $glow-yellow-shadow-sm

@@ -32,11 +32,11 @@
 .border-glow-blue {
   @include border-glow-blue;
 }
-.border-glow-blue::after {
+button.border-glow-blue::after {
   @include after-element;
   box-shadow: $glow-blue-shadow-lg;
 }
-.border-glow-blue:hover::after {
+button.border-glow-blue:hover::after {
   opacity: 1;
 }
 .text-glow-blue {
@@ -46,11 +46,11 @@
 .border-glow-red {
   @include border-glow-red;
 }
-.border-glow-red::after {
+button.border-glow-red::after {
   @include after-element;
   box-shadow: $glow-red-shadow-lg;
 }
-.border-glow-red:hover::after {
+button.border-glow-red:hover::after {
   opacity: 1;
 }
 .text-glow-red {
@@ -60,11 +60,11 @@
 .border-glow-orange {
   @include border-glow-orange;
 }
-.border-glow-orange::after {
+button.border-glow-orange::after {
   @include after-element;
   box-shadow: $glow-orange-shadow-lg;
 }
-.border-glow-orange:hover::after {
+button.border-glow-orange:hover::after {
   opacity: 1;
 }
 .text-glow-orange {
@@ -74,11 +74,11 @@
 .border-glow-pink {
   @include border-glow-pink;
 }
-.border-glow-pink::after {
+button.border-glow-pink::after {
   @include after-element;
   box-shadow: $glow-pink-shadow-lg;
 }
-.border-glow-pink:hover::after {
+button.border-glow-pink:hover::after {
   opacity: 1;
 }
 .text-glow-pink {
@@ -88,11 +88,11 @@
 .border-glow-green {
   @include border-glow-green;
 }
-.border-glow-green::after {
+button.border-glow-green::after {
   @include after-element;
   box-shadow: $glow-green-shadow-lg;
 }
-.border-glow-green:hover::after {
+button.border-glow-green:hover::after {
   opacity: 1;
 }
 .text-glow-green {
@@ -102,11 +102,11 @@
 .border-glow-yellow {
   @include border-glow-yellow;
 }
-.border-glow-yellow::after {
+button.border-glow-yellow::after {
   @include after-element;
   box-shadow: $glow-yellow-shadow-lg;
 }
-.border-glow-yellow:hover::after {
+button.border-glow-yellow:hover::after {
   opacity: 1;
 }
 .text-glow-yellow {

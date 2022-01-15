@@ -3,8 +3,11 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
+  OnChanges,
   OnInit,
   Output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 
@@ -17,8 +20,10 @@ import { UtilityService } from 'src/app/services/utility.service';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent implements OnInit, AfterViewInit {
+export class EditComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() progressEmitter = new EventEmitter<TimeUpdateObject>();
+  @Input() play: boolean = false;
+  @Input() pause: boolean = false;
 
   @ViewChild('audio', { static: true }) playerRef?: ElementRef;
   timeUpdate$?: Observable<TimeUpdateObject>;
@@ -43,6 +48,24 @@ export class EditComponent implements OnInit, AfterViewInit {
 
     // this.timeUpdate$.subscribe((time) => console.log(time));
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (const propName in changes) {
+      if (changes.hasOwnProperty(propName)) {
+        switch (propName) {
+          case 'play': {
+            if (changes.play.currentValue) this.audio.play();
+            break;
+          }
+          case 'pause': {
+            if (changes.pause.currentValue) this.audio.pause();
+            break;
+          }
+        }
+      }
+    }
+  }
+
   initObservables() {
     this.timeUpdate$?.subscribe((data: TimeUpdateObject) => {
       this.progressEmitter.emit(data);
