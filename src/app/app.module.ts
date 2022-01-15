@@ -24,6 +24,7 @@ import { GuideComponent } from './guide/guide.component';
 import { AboutComponent } from './about/about.component';
 import { CardComponent } from './create/card/card.component';
 import { ControlActionsComponent } from './create/control-actions/control-actions.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ControlActionsComponent } from './create/control-actions/control-action
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
