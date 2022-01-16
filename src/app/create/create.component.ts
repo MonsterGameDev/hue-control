@@ -7,7 +7,7 @@ import { TimeStampObject, TimeUpdateObject } from '../+state/app.interfaces';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
-  timeStamp?: TimeStampObject;
+  timeUpdateObject?: TimeUpdateObject;
   play: boolean = false;
   pause: boolean = false;
 
@@ -16,7 +16,8 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {}
 
   timeUpdateEvent(timeUpdateObject: TimeUpdateObject) {
-    this.timeStamp = timeUpdateObject.formatted;
+    this.timeUpdateObject = timeUpdateObject;
+    
     // console.log(this.timeStamp);
   }
 

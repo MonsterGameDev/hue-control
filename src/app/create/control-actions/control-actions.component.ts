@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import {
   Component,
   EventEmitter,
@@ -7,7 +8,11 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { TimeStampObject } from 'src/app/+state/app.interfaces';
+import { FormBuilder } from '@angular/forms';
+import {
+  TimeStampObject,
+  TimeUpdateObject,
+} from 'src/app/+state/app.interfaces';
 
 @Component({
   selector: 'app-control-actions',
@@ -15,26 +20,40 @@ import { TimeStampObject } from 'src/app/+state/app.interfaces';
   styleUrls: ['./control-actions.component.scss'],
 })
 export class ControlActionsComponent implements OnInit, OnChanges {
-  @Input() timeStamp?: TimeStampObject;
+  @Input() timeUpdateObject?: TimeUpdateObject;
   @Output() pauseAudio = new EventEmitter<boolean>();
   @Output() playAudio = new EventEmitter<boolean>();
 
   formattedTimeStamp?: string = '00.00:00';
   showCreateForm = false;
 
-  constructor() {}
+  timeStampForm: any;
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.timeStamp) {
-      const ts: TimeStampObject = changes.timeStamp.currentValue;
+    if (changes.timeUpdateObject) {
+      const ts: TimeStampObject =
+        changes.timeUpdateObject?.currentValue?.formatted;
       if (ts) this.formattedTimeStamp = ts.hh + ':' + ts.mm + ':' + ts.ss;
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.timeStampForm = this.fb.group({
+      id: [0],
+      title: ['', []],
+      timeStamp: [{}, []],
+      scene: [{}, []],
+      transitionTime: [200, []],
+    });
+  }
 
   startCreateTimeStamp() {
     this.showCreateForm = !this.showCreateForm;
+    if (this.showCreateForm) {
+    } else {
+    }
     this.showCreateForm
       ? this.pauseAudio.emit(true)
       : this.playAudio.emit(true);

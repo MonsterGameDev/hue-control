@@ -1,3 +1,4 @@
+<!-- SELECT TIMESTAMP -->
 <div class="create-container">
   <div
     class="select-time-stamp"
@@ -21,6 +22,8 @@
       {{ showCreateForm ? "Continue" : "Create Timestamp" }}
     </button>
   </div>
+
+  <!-- FORM -->
   <div class="create-time-stamp border-glow-blue" *ngIf="showCreateForm">
     <div class="form-container">
       <form novalidate>
@@ -36,6 +39,7 @@
               id="timeStampTitle"
               type="text"
               class="field-value border-glow-blue text-glow-pink"
+              formControlName="title"
             />
           </div>
           <div class="err-container"></div>
@@ -51,6 +55,7 @@
             <input
               type="text"
               class="field-value border-glow-blue text-glow-pink"
+              formControlName="transitionTime"
             />
           </div>
           <div class="err-container"></div>
