@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -25,6 +26,12 @@ import { AboutComponent } from './about/about.component';
 import { CardComponent } from './create/card/card.component';
 import { ControlActionsComponent } from './create/control-actions/control-actions.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { lightsReducer } from './+state/lights/lights.reducer';
+import { groupsReducer } from './+state/groups/groups.reducer';
+import { flowReducer } from './+state/flow/flow.reducer';
+import { scenesReducer } from './+state/scenes/scenes.reducer';
+import { domainReducer } from './+state/hue-domain/hue-domain.reducer';
+import { DomainEffects } from './+state/hue-domain/hue-domain.effects';
 
 @NgModule({
   declarations: [
@@ -50,10 +57,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot(
+      {
+        lightsslice: lightsReducer,
+        groupsslice: groupsReducer,
+        flowslice: flowReducer,
+        scenesslice: scenesReducer,
+        domainslice: domainReducer,
+      },
+      {}
+    ),
+    EffectsModule.forRoot([DomainEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

@@ -18,7 +18,22 @@
     align-items: center;
 
     .counter {
-      font-size: 80px;
+      @media (max-width: 2600px) {
+        font-size: 90px;
+      }
+      @media (max-width: 1600px) {
+        font-size: 70px;
+      }
+
+      @media (max-width: 1300px) {
+        font-size: 60px;
+      }
+      @media (max-width: 1000px) {
+        font-size: 45px;
+      }
+    }
+    @media (max-width: 700px) {
+      font-size: 32px;
     }
 
     .btn {
@@ -89,5 +104,3 @@
     }
   }
 }
-
-// $glow-yellow-shadow-sm
