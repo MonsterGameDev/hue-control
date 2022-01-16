@@ -7,7 +7,7 @@ export const loadFlowSuccessAction = createAction(
   '[FLOW] - Load Success',
   props<{ payload: Flow }>()
 );
-export const loadFlowError = createAction(
+export const loadFlowErrorAction = createAction(
   '[FLOW] - Load Fail',
   props<{ error: HttpErrorResponse }>()
 );
@@ -17,11 +17,11 @@ export const createNewFlowAction = createAction(
   props<{ payload: Flow }>()
 );
 
-export const addStep = createAction(
+export const addStepAction = createAction(
   '[FLOW] - Add Step',
   props<{ payload: Step }>()
 );
-export const deleteStep = createAction(
+export const deleteStepAction = createAction(
   'FLOW - Delete Step',
   props<{ payload: string }>()
 );

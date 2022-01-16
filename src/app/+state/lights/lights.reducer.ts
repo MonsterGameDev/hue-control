@@ -1,7 +1,8 @@
-import { createReducer } from '@ngrx/store';
-import { Lights } from './lights.interfaces';
+import { createReducer, on } from '@ngrx/store';
+import { LightsState } from './lights.interfaces';
+import * as lightActions from './lights.actions';
 
-export const initialState: Lights = {
+export const initialState: LightsState = {
   lights: [],
   behaviors: {
     loading: false,
@@ -9,4 +10,22 @@ export const initialState: Lights = {
   },
 };
 
-export const lightsReducer = createReducer(initialState);
+export const lightsReducer = createReducer(
+  initialState,
+  on(lightActions.loadLights, (state) => {
+    return {
+      ...state,
+    };
+  }),
+  on(lightActions.loadLightsSuccess, (state, action) => {
+    return {
+      ...state,
+      lights: action.payload,
+    };
+  }),
+  on(lightActions.loadLightsError, (state, action) => {
+    return {
+      ...state,
+    };
+  })
+);

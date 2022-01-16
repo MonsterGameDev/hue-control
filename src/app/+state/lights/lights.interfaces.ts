@@ -6,7 +6,7 @@ import {
   Swupdate,
 } from '../hue-domain/hue-domain.interfaces';
 
-export interface Lights {
+export interface LightsState {
   lights: Light[];
   behaviors: Behaviors;
   selectedLightId?: string;

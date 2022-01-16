@@ -1,10 +1,70 @@
-import { createReducer } from '@ngrx/store';
-import { Flow } from './flow.interfaces';
+import { createReducer, on } from '@ngrx/store';
+import { FlowState } from './flow.interfaces';
+import * as flowActions from './flow.actions';
+import { strictEqual } from 'assert';
 
-const initialState: Flow = {
-  projectName: '',
-  steps: [],
-  activeStep: '',
+const initialState: FlowState = {
+  flow: { projectName: '', steps: [], activeStep: '' },
+  behaviors: {
+    loading: false,
+    error: null,
+  },
 };
 
-export const flowReducer = createReducer(initialState);
+export const flowReducer = createReducer(
+  initialState,
+  on(flowActions.loadFlowAction, (state) => {
+    return {
+      ...state,
+      behaviors: {
+        loading: true,
+        error: null,
+      },
+    };
+  }),
+  on(flowActions.loadFlowSuccessAction, (state, action) => {
+    return {
+      ...state,
+      flow: action.payload,
+      behaviors: {
+        ...state.behaviors,
+        loading: false,
+      },
+    };
+  }),
+  on(flowActions.loadFlowErrorAction, (state, action) => {
+    return {
+      ...state,
+      behaviors: {
+        loading: false,
+        error: action.error,
+      },
+    };
+  }),
+  on(flowActions.createNewFlowAction, (state, action) => {
+    return {
+      ...state,
+      flow: action.payload,
+    };
+  }),
+  on(flowActions.addStepAction, (state, action) => {
+    return {
+      ...state,
+      flow: {
+        ...state.flow,
+        steps: [...state.flow.steps, action.payload],
+      },
+    };
+  }),
+  on(flowActions.deleteStepAction, (state, action) => {
+    return {
+      ...state,
+      flow: {
+        ...state.flow,
+        steps: state.flow.steps.filter(
+          (step) => step.scene.id !== action.payload
+        ),
+      },
+    };
+  })
+);

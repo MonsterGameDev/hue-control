@@ -1,6 +1,6 @@
 import { Behaviors } from '../app.interfaces';
 
-export interface Scenes {
+export interface ScenesState {
   scenes: Scene[];
   behaviors: Behaviors;
   selectedSceneId?: string;

@@ -1,5 +1,10 @@
+import { Behaviors } from "../app.interfaces";
 import { Scene } from "../scenes/scenes.interfaces";
 
+export interface FlowState {
+  flow: Flow,
+  behaviors: Behaviors;
+}
 export interface Flow {
   projectName: string;
   steps: Step[];
