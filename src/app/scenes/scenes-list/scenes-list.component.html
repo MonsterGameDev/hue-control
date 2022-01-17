@@ -1,1 +1,7 @@
-<p>scenes-list works!</p>
+<div class="scenes-container" *ngIf="scenes">
+
+  <div class="scenes-list" *ngFor="let scene of scenes">
+    <app-scene-item [scene]="scene"></app-scene-item>
+  </div>
+</div>
+<div class="nothing-to-display" *ngIf="!scenes">No scenes found...</div>

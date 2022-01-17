@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { FlowState } from './flow.interfaces';
 import * as flowActions from './flow.actions';
-import { strictEqual } from 'assert';
 
 const initialState: FlowState = {
   flow: { projectName: '', steps: [], activeStep: '' },

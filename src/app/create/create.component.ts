@@ -1,5 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { TimeStampObject, TimeUpdateObject } from '../+state/app.interfaces';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { TimeUpdateObject } from '../+state/app.interfaces';
+import { Group } from '../+state/groups/groups.interfaces';
+import { Scene } from '../+state/scenes/scenes.interfaces';
+import { selectAllScenes } from '../+state/scenes/scenes.selectors';
 
 @Component({
   selector: 'app-create',
@@ -8,17 +13,21 @@ import { TimeStampObject, TimeUpdateObject } from '../+state/app.interfaces';
 })
 export class CreateComponent implements OnInit {
   timeUpdateObject?: TimeUpdateObject;
+  subs: Subscription[] = [];
   play: boolean = false;
   pause: boolean = false;
+  scenes: Scene[] = [];
 
-  constructor() {}
+  constructor(private store: Store) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store
+      .select(selectAllScenes)
+      .subscribe((data: Scene[]) => (this.scenes = data));
+  }
 
   timeUpdateEvent(timeUpdateObject: TimeUpdateObject) {
     this.timeUpdateObject = timeUpdateObject;
-    
-    // console.log(this.timeStamp);
   }
 
   pauseAudio(e: any) {

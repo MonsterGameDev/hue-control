@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { Groups } from './groups.interfaces';
+import { GroupsState } from './groups.interfaces';
 import * as groupsActions from './groups.actions';
 
-export const initialState: Groups = {
+export const initialState: GroupsState = {
   groups: [],
   behaviors: {
     loading: false,
@@ -17,9 +17,9 @@ export const groupsReducer = createReducer(
       ...state,
       behaviors: {
         loading: true,
-        error: null
-      }
-    }
+        error: null,
+      },
+    };
   }),
   on(groupsActions.loadGroupsSuccess, (state, action) => {
     return {
@@ -27,17 +27,42 @@ export const groupsReducer = createReducer(
       groups: action.payload,
       behaviors: {
         loading: false,
-        error: null
-      }
-    }
+        error: null,
+      },
+    };
   }),
   on(groupsActions.loadGroupsError, (state, action) => {
     return {
       ...state,
       behaviors: {
         loading: false,
-        error: action.error
+        error: action.error,
+      },
+    };
+  }),
+  on(groupsActions.updateGroupAction, (state) => {
+    return {
+      ...state,
+      behaviors: {
+        loading: true,
+        error: null,
       }
     }
   }),
-  );
+  on(groupsActions.updateGroupActionSuccess, (state, action) => {
+    // TODO - what should be written to state when group is updated
+    return {
+        ...state
+    }
+  }),
+  on(groupsActions.updateGroupActionFail, (state, action) => {
+    return {
+      ...state,
+      behaviors: {
+        loading: false,
+        error: action.error
+
+      }
+    }
+  }),
+);

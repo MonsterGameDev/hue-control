@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Group } from 'src/app/+state/groups/groups.interfaces';
+import { selectGroups } from 'src/app/+state/groups/groups.selectors';
 
 @Component({
   selector: 'app-groups-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupsListComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private store: Store) { }
+  groups?: Group[];
   ngOnInit(): void {
+
+    //this.store.select(selectGroups).subscribe(data=> console.log(data));
+    this.store.pipe(select(selectGroups)).subscribe(data=> console.log(data));
+
   }
 
 }
