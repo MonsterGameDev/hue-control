@@ -22,14 +22,38 @@
     justify-content: space-between;
 
     .card {
-     
       width: 32.5%;
       height: 100%;
-
 
       app-card,
       app-control-actions {
         height: 100%;
+        .list-slot {
+          height: 100%;
+          overflow-y: scroll;
+          padding-right: 10px;
+        }
+        /* width */
+        .list-slot::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        /* Track */
+        .list-slot::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px grey;
+          border-radius: 10px;
+        }
+
+        /* Handle */
+        .list-slot::-webkit-scrollbar-thumb {
+          background: lightgrey;
+          border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        .list-slot::-webkit-scrollbar-thumb:hover {
+          background: yellow;
+        }
       }
     }
   }
