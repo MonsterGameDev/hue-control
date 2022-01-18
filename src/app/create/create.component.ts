@@ -16,15 +16,15 @@ export class CreateComponent implements OnInit {
   subs: Subscription[] = [];
   play: boolean = false;
   pause: boolean = false;
-  scenes: Scene[] = [];
+    scenes: Scene[] = [];
 
-  constructor(private store: Store) {}
+    constructor(private store: Store) {}
 
-  ngOnInit(): void {
-    this.store
-      .select(selectAllScenes)
-      .subscribe((data: Scene[]) => (this.scenes = data));
-  }
+    ngOnInit(): void {
+      this.store
+        .select(selectAllScenes)
+        .subscribe((data: Scene[]) => (this.scenes = data));
+    }
 
   timeUpdateEvent(timeUpdateObject: TimeUpdateObject) {
     this.timeUpdateObject = timeUpdateObject;

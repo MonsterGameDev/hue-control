@@ -1,11 +1,21 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from '../app.state';
 
 import { Scene, ScenesState } from './scenes.interfaces';
 
-export const selectSceneSlice = (state: any) => state.scenesslice;
+export const selectScenesSlice = (state: any) => state.scenesslice;
 
 export const selectAllScenes = createSelector(
-  selectSceneSlice,
+  selectScenesSlice,
   (state: ScenesState): Scene[] => state.scenes
+);
+
+export const selectSelectedSceneId = createSelector(
+  selectScenesSlice,
+  (state: ScenesState): string | undefined => state.selectedSceneId
+)
+
+export const selectSelectedScene = createSelector(
+  selectScenesSlice,
+  (state: ScenesState): Scene | undefined =>
+    state.scenes.find((scene) => scene.id === state.selectedSceneId)
 );

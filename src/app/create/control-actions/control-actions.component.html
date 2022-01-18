@@ -26,7 +26,7 @@
   <!-- FORM -->
   <div class="create-time-stamp border-glow-blue" *ngIf="showCreateForm">
     <div class="form-container">
-      <form novalidate>
+      <form novalidate [formGroup]="timeStampForm">
         <h1 class="text-glow-blue">
           Create timestamp at {{ formattedTimeStamp }}
         </h1>
@@ -44,9 +44,16 @@
           </div>
           <div class="err-container"></div>
         </div>
-        <button class="btn border-glow-blue text-glow-pink scene-picker">
+        <button
+          class="btn border-glow-blue text-glow-pink scene-picker"
+          *ngIf="!selectedScene"
+          (click)="selectScene()"
+        >
           Pick Scene
         </button>
+        <div class="selected-scene scene-picker" *ngIf="selectedScene">
+          <app-scene-item [scene]="selectedScene"></app-scene-item>
+        </div>
         <div class="field-container">
           <div class="field-area">
             <label for="" class="field-label text-glow-blue"
@@ -61,10 +68,17 @@
           <div class="err-container"></div>
         </div>
         <div class="cta-section">
-          <button class="btn border-glow-blue text-glow-blue btn-reset">
+          <button
+            class="btn border-glow-blue text-glow-blue btn-reset"
+            (click)="resetForm()"
+          >
             Reset
           </button>
-          <button class="btn border-glow-blue text-glow-blue btn-submit">
+          <button
+            class="btn border-glow-blue text-glow-blue btn-submit"
+            (click)="submit()"
+            [disabled]="!timeStampForm.valid || !selectedScene"
+          >
             Create
           </button>
         </div>

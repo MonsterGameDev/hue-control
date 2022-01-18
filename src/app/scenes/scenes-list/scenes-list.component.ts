@@ -1,19 +1,29 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import {
+  clearSelectedScene,
+  setSelectedScene,
+} from 'src/app/+state/scenes/scenes.actions';
 import { Scene } from 'src/app/+state/scenes/scenes.interfaces';
 
 @Component({
   selector: 'app-scenes-list',
   templateUrl: './scenes-list.component.html',
-  styleUrls: ['./scenes-list.component.scss']
+  styleUrls: ['./scenes-list.component.scss'],
 })
 export class ScenesListComponent implements OnInit {
-  @Input() scenes: Scene[]=[];
+  @Input() scenes: Scene[] = [];
 
-  constructor() { }
+  constructor(private store: Store) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  setSelectedScene(scene: Scene) {
+    const payload: Scene = scene;
+    this.store.dispatch(setSelectedScene({ payload }));
   }
 
-  
-
+  resetForm() {
+    this.store.dispatch(clearSelectedScene());
+  }
 }

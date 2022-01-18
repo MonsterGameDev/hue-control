@@ -36,4 +36,10 @@ export class HttpService {
 
     return this.httpClient.put<any>(url, body);
   }
+
+
+  // Scenes
+  getAllScenes(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/scenes`);
+  }
 }

@@ -77,6 +77,19 @@
           }
           .btn-reset {
           }
+          .btn-submit:disabled,
+          .btn-submit[disabled] {
+            @include border-glow-red;
+            @include text-glow-red;
+          }
+          .btn-submit:disabled:hover,
+          .btn-submit[disabled]:hover {
+            transform: translate(0);
+          }
+          .btn-submit:disabled:hover::after,
+          .btn-submit[disabled]:hover::after {
+            opacity: 0;
+          }
         }
 
         .field-container {

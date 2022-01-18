@@ -3,7 +3,11 @@ import { FlowState } from './flow.interfaces';
 import * as flowActions from './flow.actions';
 
 const initialState: FlowState = {
-  flow: { projectName: '', steps: [], activeStep: '' },
+  flow: {
+    projectName: 'Not Set',
+    steps: [],
+    activeStep: undefined,
+  },
   behaviors: {
     loading: false,
     error: null,
@@ -54,16 +58,16 @@ export const flowReducer = createReducer(
         steps: [...state.flow.steps, action.payload],
       },
     };
-  }),
-  on(flowActions.deleteStepAction, (state, action) => {
-    return {
-      ...state,
-      flow: {
-        ...state.flow,
-        steps: state.flow.steps.filter(
-          (step) => step.scene.id !== action.payload
-        ),
-      },
-    };
   })
+  // on(flowActions.deleteStepAction, (state, action) => {
+  //   return {
+  //     ...state,
+  //     flow: {
+  //       ...state.flow,
+  //       steps: state.flow.steps.filter(
+  //         (step) => step.scene.id !== action.payload
+  //       ),
+  //     },
+  //   };
+  // })
 );

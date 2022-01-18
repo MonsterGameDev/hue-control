@@ -1,6 +1,6 @@
 <div class="scenes-container" *ngIf="scenes">
 
-  <div class="scenes-list" *ngFor="let scene of scenes">
+  <div class="scenes-list" *ngFor="let scene of scenes" (click)="setSelectedScene(scene)">
     <app-scene-item [scene]="scene"></app-scene-item>
   </div>
 </div>

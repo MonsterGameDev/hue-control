@@ -1,8 +1,8 @@
-import { Behaviors } from "../app.interfaces";
-import { Scene } from "../scenes/scenes.interfaces";
+import { Behaviors } from '../app.interfaces';
+import { Scene } from '../scenes/scenes.interfaces';
 
 export interface FlowState {
-  flow: Flow,
+  flow: Flow;
   behaviors: Behaviors;
 }
 export interface Flow {
@@ -13,14 +13,14 @@ export interface Flow {
 
 export interface Step {
   title: string;
-  scene: Scene,
+  sceneId: string;
   timeStamp: string;
   transitionTime: number;
   groupId: string;
 }
 
 export interface StepRequest {
-  sceneIdent: string,
+  sceneIdent: string;
   timeStamp: string;
   transitionTime: number;
   groupId: string;

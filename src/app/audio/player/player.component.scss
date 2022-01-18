@@ -1,0 +1,54 @@
+@import "mixins";
+@import "animations";
+
+@import url("https://fonts.googleapis.com/css2?family=The+Nautigal&family=Vujahday+Script&display=swap");
+
+.play-container {
+  @include display-card;
+  animation: horizontal-reveal 0.5s 0.3s ease-in-out backwards;
+
+  .content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // .sub-header {
+    //   font-size: 40px;
+    //   font-weight: bolder;
+    //   color: lightblue;
+    //   text-transform: uppercase;
+    //   font-family: "Vujahday Script", cursive;
+
+    //   background: linear-gradient(
+    //     42deg,
+    //     #246655,
+    //     #7d250a,
+    //     #2014d3,
+    //     #7c0a7d,
+    //     #d1d516,
+    //     rgb(230, 6, 181)
+    //   );
+    //   background-size: 1000% 1000%;
+    //   background-clip: text;
+    //   -webkit-text-fill-color: transparent;
+
+    //   animation: animated-gradient 30s ease infinite;
+    // }
+    // }
+  }
+}
+
+// @keyframes animated-gradient {
+//   0% {
+//     background-position: 0% 56%;
+//   }
+//   50% {
+//     background-position: 100% 45%;
+//   }
+//   100% {
+//     background-position: 0% 56%;
+//   }
+// }

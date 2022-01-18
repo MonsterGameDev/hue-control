@@ -2,8 +2,10 @@
   color: white;
   margin-bottom: 10px;
   font-size: 14px;
+  height: 100%;
 
   .card {
+    height: inherit;
     border: 1px solid whitesmoke;
     padding: 5px;
     border-radius: 5px;
