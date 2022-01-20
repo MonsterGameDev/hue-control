@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { TimeUpdateObject } from '../+state/app.interfaces';
-import { Flow, Step } from '../+state/flow/flow.interfaces';
+import { Flow, FlowState, Step } from '../+state/flow/flow.interfaces';
+import { selectFlow } from '../+state/flow/flow.selectors';
 import { GroupActionUpdate } from '../+state/groups/groups.interfaces';
 import { UtilityService } from '../services/utility.service';
 import * as groupActions from './../+state/groups/groups.actions';
@@ -53,10 +54,19 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   steps?: Step[];
   audio: any;
   timeUpdate$?: Observable<any>;
+  flow$ = this.store.pipe(select(selectFlow));
+  flow?: FlowState;
 
   ngOnInit(): void {
     const myFlow: Flow = FLOW_MOCK;
     this.steps = myFlow.steps;
+
+    this.flow$.subscribe((data: FlowState): void => {
+      this.flow = data;
+      this.steps = myFlow.steps;
+      this.steps = data.flow.steps;
+      console.log(this.steps);
+    });
   }
 
   ngAfterViewInit() {
@@ -71,22 +81,20 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     });
 
     this.initObservables();
-
-    // this.timeUpdate$.subscribe((time) => console.log(time));
   }
 
-  startFlow() {
-    const updateObject: GroupActionUpdate = {
-      id: '7',
-      body: {
-        scene: 'UIM9-EmigSgJhW2',
-      },
-    };
+  // startFlow() {
+  //   const updateObject: GroupActionUpdate = {
+  //     id: '7',
+  //     body: {
+  //       scene: 'UIM9-EmigSgJhW2',
+  //     },
+  //   };
 
-    this.store.dispatch(
-      groupActions.updateGroupAction({ payload: updateObject })
-    );
-  }
+  //   this.store.dispatch(
+  //     groupActions.updateGroupAction({ payload: updateObject })
+  //   );
+  // }
 
   initObservables() {
     this.timeUpdate$

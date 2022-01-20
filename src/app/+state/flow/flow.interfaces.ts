@@ -5,6 +5,7 @@ export interface FlowState {
   flow: Flow;
   behaviors: Behaviors;
 }
+
 export interface Flow {
   projectName: string;
   steps: Step[];

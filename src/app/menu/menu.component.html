@@ -2,54 +2,90 @@
   class="menu-container"
   style="clip-path: polygon(0, 0 100%, 0 100%, 50% 0, 50%)"
 >
-<div class="content">
-  <div class="header"></div>
-  <div class="menu">
-    <ul class="menu-list">
-      <li
-        [routerLinkActive]="['menu-link-active']"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="menu-item"
-      >
-        <a routerLink="/home">Home</a>
-      </li>
-      <li
-        [routerLinkActive]="['menu-link-active']"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="menu-item"
-      >
-        <a routerLink="/player">Play</a>
-      </li>
-      <li
-        [routerLinkActive]="['menu-link-active']"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="menu-item"
-      >
-        <a [routerLink]="['/create']">Create</a>
-      </li>
-      <li
-        [routerLinkActive]="['menu-link-active']"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="menu-item"
-      >
-        <a [routerLink]="['/overview']">Overview</a>
-      </li>
-      <li
-        [routerLinkActive]="['menu-link-active']"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="menu-item"
-      >
-        <a routerLink="/guide">Guide</a>
-      </li>
-      <li
-        [routerLinkActive]="['menu-link-active']"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="menu-item"
-      >
-        <a routerLink="/about">About</a>
-      </li>
-    </ul>
+  <div class="content">
+    <div class="header"></div>
+    <div class="menu">
+      <ul class="menu-list">
+        <li
+          [routerLinkActive]="['menu-link-active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-item"
+        >
+          <button
+            routerLink="/home"
+            class="btn border-glow-blue text-glow-blue"
+            style="margin: 10px"
+          >
+            Home
+          </button>
+          <!-- <a routerLink="/home">Home</a> -->
+        </li>
+        <li
+          [routerLinkActive]="['menu-link-active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-item"
+        >
+          <button
+            routerLink="/player"
+            class="btn border-glow-yellow text-glow-yellow"
+            style="margin: 10px"
+          >
+            Play
+          </button>
+        </li>
+        <li
+          [routerLinkActive]="['menu-link-active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-item"
+        >
+          <button
+            [routerLink]="['/create']"
+            class="btn border-glow-red text-glow-red"
+            style="margin: 10px"
+          >
+            Create
+          </button>
+        </li>
+        <li
+          [routerLinkActive]="['menu-link-active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-item"
+        >
+          <button
+            [routerLink]="['/overview']"
+            class="btn border-glow-orange text-glow-orange"
+            style="margin: 10px"
+          >
+            Overview
+          </button>
+        </li>
+        <li
+          [routerLinkActive]="['menu-link-active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-item"
+        >
+          <button
+            routerLink="/guide"
+            class="btn border-glow-green text-glow-green"
+            style="margin: 10px"
+          >
+            Guide
+          </button>
+        </li>
+        <li
+          [routerLinkActive]="['menu-link-active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-item"
+        >
+          <button
+            routerLink="/about"
+            class="btn border-glow-pink text-glow-pink"
+            style="margin: 10px"
+          >
+            About
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
-
 </div>

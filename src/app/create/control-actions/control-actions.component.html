@@ -1,12 +1,17 @@
-<!-- SELECT TIMESTAMP -->
+<!-- SELECT TIMESTAMP - Page container -->
 <div class="create-container">
+  <!-- TIME-BOX - PAGE TOP-->
   <div
     class="select-time-stamp"
     [ngClass]="showCreateForm ? 'border-glow-pink' : 'border-glow-green'"
   >
     <div
       class="counter"
-      [ngClass]="showCreateForm ? 'text-glow-pink' : 'text-glow-green'"
+      [ngClass]="
+        showCreateForm || showSuccessMessage
+          ? 'text-glow-pink'
+          : 'text-glow-green'
+      "
     >
       {{ formattedTimeStamp }}
     </div>
@@ -17,93 +22,82 @@
           ? ['border-glow-pink', 'text-glow-pink']
           : ['border-glow-green', 'text-glow-green']
       "
-      (click)="startCreateTimeStamp()"
+      (click)="startCreateTimeStampClick()"
     >
-      {{ showCreateForm ? "Continue" : "Create Timestamp" }}
+      {{ showCreateForm ? "Play to next" : "Create Timestamp" }}
     </button>
   </div>
 
-  <!-- FORM -->
   <div class="create-time-stamp border-glow-blue" *ngIf="showCreateForm">
-    <div class="form-container">
-      <form novalidate [formGroup]="timeStampForm">
-        <h1 class="text-glow-blue">
-          Create timestamp at {{ formattedTimeStamp }}
-        </h1>
-        <div class="field-container">
-          <div class="field-area">
-            <label for="timeStampTitles" class="field-label text-glow-blue"
-              >Title:</label
-            >
-            <input
-              id="timeStampTitle"
-              type="text"
-              class="field-value border-glow-blue text-glow-pink"
-              formControlName="title"
-            />
-          </div>
-          <div class="err-container"></div>
+    <div class="form-container" *ngIf="showForm">
+      <h1 class="text-glow-blue">
+        Create timestamp at {{ formattedTimeStamp }}
+      </h1>
+      <div class="field-container">
+        <div class="field-area">
+          <label for="timeStampTitles" class="field-label text-glow-blue"
+            >Title:</label
+          >
+          <input
+            autocomplete="off"
+            id="timeStampTitle"
+            type="text"
+            class="field-value border-glow-blue text-glow-pink"
+            [(ngModel)]="timestampTitle"
+          />
         </div>
+      </div>
+      <button
+        class="btn border-glow-blue text-glow-pink scene-picker"
+        *ngIf="!selectedScene"
+        (click)="selectScene()"
+      >
+        Pick Scene
+      </button>
+      <div class="selected-scene scene-picker" *ngIf="selectedScene">
+        <app-scene-item [scene]="selectedScene"></app-scene-item>
+      </div>
+      <div class="field-container">
+        <div class="field-area">
+          <label for="" class="field-label text-glow-blue"
+            >TransitionTime:</label
+          >
+          <input
+            autocomplete="off"
+            type="number"
+            class="
+              field-value
+              border-glow-blue
+              text-glow-pink
+              field-value-number
+            "
+            [(ngModel)]="transitionTime"
+          />
+        </div>
+      </div>
+      <div class="cta-section">
         <button
-          class="btn border-glow-blue text-glow-pink scene-picker"
-          *ngIf="!selectedScene"
-          (click)="selectScene()"
+          class="btn border-glow-blue text-glow-blue btn-reset"
+          (click)="resetForm()"
         >
-          Pick Scene
+          Reset
         </button>
-        <div class="selected-scene scene-picker" *ngIf="selectedScene">
-          <app-scene-item [scene]="selectedScene"></app-scene-item>
-        </div>
-        <div class="field-container">
-          <div class="field-area">
-            <label for="" class="field-label text-glow-blue"
-              >TransitionTime:</label
-            >
-            <input
-              type="text"
-              class="field-value border-glow-blue text-glow-pink"
-              formControlName="transitionTime"
-            />
-          </div>
-          <div class="err-container"></div>
-        </div>
-        <div class="cta-section">
-          <button
-            class="btn border-glow-blue text-glow-blue btn-reset"
-            (click)="resetForm()"
-          >
-            Reset
-          </button>
-          <button
-            class="btn border-glow-blue text-glow-blue btn-submit"
-            (click)="submit()"
-            [disabled]="!timeStampForm.valid || !selectedScene"
-          >
-            Create
-          </button>
-        </div>
-      </form>
+        <button
+          class="btn border-glow-blue text-glow-blue btn-submit"
+          (click)="submit()"
+          [disabled]="!isValid()"
+        >
+          Create
+        </button>
+      </div>
+    </div>
+    <div
+      class="text-glow-orange create-success-message"
+      *ngIf="showSuccessMessage"
+    >
+      SUCCESS
     </div>
   </div>
-
-  <!-- <button class="btn border-glow-blue text-glow-blue" style="margin: 10px">
-  Button
-</button>
-<button class="btn border-glow-yellow text-glow-yellow" style="margin: 10px">
-  Button
-</button>
-<button class="btn border-glow-red text-glow-red" style="margin: 10px">
-  Button
-</button>
-<button class="btn border-glow-green text-glow-green" style="margin: 10px">
-  Button
-</button>
-<button class="btn border-glow-pink text-glow-pink" style="margin: 10px">
-  Button
-</button>
-<button class="btn border-glow-orange text-glow-orange" style="margin: 10px">
-  Button
-</button> -->
 
   <!-- <div class="button-group">
   <div class="counter">{{ formattedTimeStamp }}</div>

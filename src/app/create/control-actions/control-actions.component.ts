@@ -33,14 +33,16 @@ export class ControlActionsComponent implements OnInit, OnChanges {
   @Output() pauseAudio = new EventEmitter<boolean>();
   @Output() playAudio = new EventEmitter<boolean>();
 
-  formattedTimeStamp?: string = '00.00:00';
   showCreateForm = false;
+  showSuccessMessage = false;
+  showForm = false;
+
+  formattedTimeStamp?: string = '00:00:00';
   selectedScene?: Scene;
-  initialFormValues?: any;
+  timestampTitle?: string;
+  transitionTime: string = '0.2';
 
-  timeStampForm: any;
-
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(private store: Store) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.timeUpdateObject) {
@@ -51,76 +53,69 @@ export class ControlActionsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.timeStampForm = this.fb.group({
-      id: [0],
-      title: ['', [Validators.required]],
-      timeStamp: ['', [Validators.required]],
-      scene: [null, []],
-      transitionTime: [
-        200,
-        [
-          Validators.required,
-          Validators.pattern('^[0-9]*$'),
-          Validators.min(0),
-        ],
-      ],
-    });
-
-    this.initialFormValues = this.timeStampForm.value;
-
     this.store
       .pipe(select(selectSelectedScene))
       .pipe(distinctUntilChanged())
       .subscribe((selectedScene: Scene | undefined) => {
-        console.log('selectedScene: ', selectedScene);
-
         this.selectedScene = selectedScene;
-        this.timeStampForm.get('scene').value = selectedScene;
-
-        console.log('timestampForm: ', this.timeStampForm);
       });
   }
 
-  startCreateTimeStamp() {
+  startCreateTimeStampClick() {
     this.showCreateForm = !this.showCreateForm;
 
     if (this.showCreateForm) {
       this.pauseAudio.emit(true);
+      this.showSuccessMessage = false;
+      this.showForm = true;
     } else {
       this.playAudio.emit(true);
     }
-
-    this.timeStampForm.get('timeStamp').value =
-      this.timeStampForm.formattedTimeStamp || '00:00:00';
   }
 
   resetForm() {
     this.store.dispatch(clearSelectedScene());
+    this.timestampTitle = '';
+    this.transitionTime = '0.2';
   }
 
   submit() {
-    console.log('form: ', this.timeStampForm);
+    if(!this.isValid()) return;
+    this.showSuccessMessage = true;
+    this.showForm = false;
 
-    if (this.timeStampForm.valid) {
-      const title = this.timeStampForm.get('title').value;
-      const scene: Scene = this.timeStampForm.get('scene').value;
-      const timeStamp = this.timeStampForm.get('timeStamp').value;
-      const transitionTime = this.timeStampForm.get('transitionTime').value;
+    this.resetForm();
 
-      const payload: Step = {
-        title,
-        sceneId: scene.id,
-        timeStamp,
-        transitionTime: isNaN(transitionTime) ? transitionTime * 0.01 : 0,
-        groupId: scene.group,
-      };
-      this.store.dispatch(addStepAction({ payload }));
-      this.timeStampForm.reset(this.initialFormValues);
-      this.store.dispatch(clearSelectedScene());
-    }
+    const payload: Step = {
+      title: this.timestampTitle!,
+      sceneId: this.selectedScene!.id,
+      timeStamp: this.formattedTimeStamp!,
+      transitionTime: Number(this.transitionTime!) * 10,
+      groupId: this.selectedScene!.group,
+    };
+
+    if (!this.isValid()) return;
+
+    this.store.dispatch(addStepAction({ payload }));
+    this.store.dispatch(clearSelectedScene());
   }
+
 
   selectScene() {
     this.store.dispatch(loadScenes());
+  }
+
+  isValid(): boolean {
+    if (this.transitionTime === '') this.transitionTime = '0.2';
+
+    return (
+      !!this.formattedTimeStamp &&
+      this.formattedTimeStamp !== '' &&
+      !!this.timestampTitle &&
+      this.timestampTitle !== '' &&
+      !!this.selectScene &&
+      !!this.transitionTime &&
+      parseInt(this.transitionTime!) >= 0
+    );
   }
 }

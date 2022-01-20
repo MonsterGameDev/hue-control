@@ -51,69 +51,78 @@
       height: 100%;
       width: 100%;
 
-      form {
+      h1 {
+        font-size: 24px;
+        margin: 10px auto;
+        font-weight: normal;
+      }
+      .scene-picker {
         width: 100%;
-        height: 100%;
+        height: 100px;
+        margin: 20px auto;
+        font-size: 20px;
+      }
 
-        h1 {
-          font-size: 24px;
-          margin: 10px auto;
-          font-weight: normal;
+      .cta-section {
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-end;
+        .btn-submit,
+        .btn-reset {
+          margin: 0 10px 0 0;
         }
-        .scene-picker {
+
+        .btn-submit:disabled,
+        .btn-submit[disabled] {
+          @include border-glow-red;
+          @include text-glow-red;
+          cursor: not-allowed;
+        }
+        .btn-submit:disabled:hover,
+        .btn-submit[disabled]:hover {
+          transform: translate(0);
+        }
+        .btn-submit:disabled:hover::after,
+        .btn-submit[disabled]:hover::after {
+          opacity: 0;
+        }
+      }
+
+      .field-container {
+        width: 100%;
+        .field-area {
           width: 100%;
-          height: 100px;
-          margin: 20px auto;
-          font-size: 20px;
-        }
-
-        .cta-section {
-          margin-top: 10px;
-          display: flex;
-          justify-content: flex-end;
-          .btn-submit,
-          .btn-reset {
-            margin: 0 10px 0 0;
+          .field-label {
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 0px;
           }
-          .btn-reset {
-          }
-          .btn-submit:disabled,
-          .btn-submit[disabled] {
-            @include border-glow-red;
-            @include text-glow-red;
-          }
-          .btn-submit:disabled:hover,
-          .btn-submit[disabled]:hover {
-            transform: translate(0);
-          }
-          .btn-submit:disabled:hover::after,
-          .btn-submit[disabled]:hover::after {
-            opacity: 0;
-          }
-        }
-
-        .field-container {
-          width: 100%;
-          .field-area {
+          input.field-value {
             width: 100%;
-            .field-label {
-              font-size: 18px;
-              display: inline-block;
-              margin-bottom: 0px;
-            }
-            input.field-value {
-              width: 100%;
-              background: transparent;
-              caret-color: $pink-dark;
-              font-size: 32px;
-              padding: 3px;
-              border-radius: 10px;
-            }
+            background: transparent;
+            caret-color: $pink-dark;
+            font-size: 32px;
+            padding: 3px;
+            border-radius: 10px;
           }
-          .err-container {
+          input.field-value-number::-webkit-outer-spin-button,
+          input.field-value-number::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
           }
         }
       }
     }
   }
+}
+
+.create-success-message {
+  :host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  font-size: 42px;
+  width: 100%;
+  text-align: center;
 }
