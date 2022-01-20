@@ -21,7 +21,10 @@ import {
   loadScenes,
 } from 'src/app/+state/scenes/scenes.actions';
 import { Scene } from 'src/app/+state/scenes/scenes.interfaces';
-import { selectSelectedScene } from 'src/app/+state/scenes/scenes.selectors';
+import {
+  selectAllScenes,
+  selectSelectedScene,
+} from 'src/app/+state/scenes/scenes.selectors';
 
 @Component({
   selector: 'app-control-actions',
@@ -32,6 +35,7 @@ export class ControlActionsComponent implements OnInit, OnChanges {
   @Input() timeUpdateObject?: TimeUpdateObject;
   @Output() pauseAudio = new EventEmitter<boolean>();
   @Output() playAudio = new EventEmitter<boolean>();
+  @Output() showSceneEmitter = new EventEmitter<boolean>();
 
   showCreateForm = false;
   showSuccessMessage = false;
@@ -77,14 +81,13 @@ export class ControlActionsComponent implements OnInit, OnChanges {
     this.store.dispatch(clearSelectedScene());
     this.timestampTitle = '';
     this.transitionTime = '0.2';
+    this.showSceneEmitter.emit(false);
   }
 
   submit() {
-    if(!this.isValid()) return;
+    if (!this.isValid()) return;
     this.showSuccessMessage = true;
     this.showForm = false;
-
-    this.resetForm();
 
     const payload: Step = {
       title: this.timestampTitle!,
@@ -97,12 +100,12 @@ export class ControlActionsComponent implements OnInit, OnChanges {
     if (!this.isValid()) return;
 
     this.store.dispatch(addStepAction({ payload }));
-    this.store.dispatch(clearSelectedScene());
+    this.resetForm();
   }
-
 
   selectScene() {
     this.store.dispatch(loadScenes());
+    this.showSceneEmitter.emit(true);
   }
 
   isValid(): boolean {
@@ -113,7 +116,7 @@ export class ControlActionsComponent implements OnInit, OnChanges {
       this.formattedTimeStamp !== '' &&
       !!this.timestampTitle &&
       this.timestampTitle !== '' &&
-      !!this.selectScene &&
+      !!this.selectedScene &&
       !!this.transitionTime &&
       parseInt(this.transitionTime!) >= 0
     );

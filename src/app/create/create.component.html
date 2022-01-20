@@ -13,19 +13,19 @@
           [timeUpdateObject]="timeUpdateObject"
           (pauseAudio)="pauseAudio($event)"
           (playAudio)="playAudio($event)"
+          (showSceneEmitter)="handleShowScenes($event)"
         ></app-control-actions>
       </app-card>
     </div>
     <div class="card">
       <app-card>
-        <div class="list-slot">
+        <div class="list-slot" *ngIf="readyToPickScene">
           <app-scenes-list [scenes]="scenes"></app-scenes-list>
         </div>
-
       </app-card>
     </div>
     <div class="card">
-      <app-card></app-card>
+      <app-card> </app-card>
     </div>
   </div>
 </div>

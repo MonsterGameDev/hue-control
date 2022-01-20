@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { TimeUpdateObject } from '../+state/app.interfaces';
-import { Group } from '../+state/groups/groups.interfaces';
 import { Scene } from '../+state/scenes/scenes.interfaces';
 import { selectAllScenes } from '../+state/scenes/scenes.selectors';
 
@@ -16,15 +15,17 @@ export class CreateComponent implements OnInit {
   subs: Subscription[] = [];
   play: boolean = false;
   pause: boolean = false;
-    scenes: Scene[] = [];
+  scenes: Scene[] = [];
 
-    constructor(private store: Store) {}
+  readyToPickScene = false;
 
-    ngOnInit(): void {
-      this.store
-        .select(selectAllScenes)
-        .subscribe((data: Scene[]) => (this.scenes = data));
-    }
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.store.select(selectAllScenes).subscribe((data: Scene[]) => {
+      this.scenes = data;
+    });
+  }
 
   timeUpdateEvent(timeUpdateObject: TimeUpdateObject) {
     this.timeUpdateObject = timeUpdateObject;
@@ -38,5 +39,11 @@ export class CreateComponent implements OnInit {
   playAudio(e: any) {
     this.play = true;
     this.pause = false;
+  }
+
+  handleShowScenes(e: boolean) {
+    console.log(e);
+
+    this.readyToPickScene = e;
   }
 }
