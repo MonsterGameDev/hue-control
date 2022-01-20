@@ -1,3 +1,7 @@
+@import "variables";
+@import "mixins";
+@import "components";
+
 .scene-item-container {
   color: white;
   margin-bottom: 10px;
@@ -6,13 +10,16 @@
 
   .card {
     height: inherit;
-    border: 1px solid whitesmoke;
     padding: 5px;
     border-radius: 5px;
+    font-size: 18px;
 
-    .table {
-      display: flex;
-      justify-content: space-between;
+    .scene-name {
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 14px;
     }
   }
 }

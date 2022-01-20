@@ -1,6 +1,20 @@
+@import "variables";
+@import "variables";
+@import "mixins";
+@import "components";
+
+.scenes-container {
+  .scenes-list {
+    margin-top: 15px;
+    .scenes-list-item {
+      margin-bottom: 15px;
+      app-scene-item {
+      }
+    }
+  }
+}
+
 .nothing-to-displaey {
   font-size: 18px;
   color: white;
 }
-
-

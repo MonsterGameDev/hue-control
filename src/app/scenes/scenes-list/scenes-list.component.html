@@ -1,7 +1,12 @@
 <div class="scenes-container" *ngIf="scenes">
-
-  <div class="scenes-list" *ngFor="let scene of scenes" (click)="setSelectedScene(scene)">
-    <app-scene-item [scene]="scene"></app-scene-item>
+  <div class="scenes-list">
+    <div
+      class="scenes-list-item border-glow-orange"
+      *ngFor="let scene of scenes"
+      (click)="setSelectedScene(scene)"
+    >
+      <app-scene-item [scene]="scene"></app-scene-item>
+    </div>
   </div>
+  <div class="nothing-to-display" *ngIf="!scenes">No scenes found...</div>
 </div>
-<div class="nothing-to-display" *ngIf="!scenes">No scenes found...</div>

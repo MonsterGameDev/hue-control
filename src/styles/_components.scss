@@ -31,6 +31,7 @@
 
 .border-glow-blue {
   @include border-glow-blue;
+  border-radius: $border-radius;
 }
 button.border-glow-blue::after {
   @include after-element;
@@ -45,6 +46,7 @@ button.border-glow-blue:hover::after {
 
 .border-glow-red {
   @include border-glow-red;
+  border-radius: $border-radius;
 }
 button.border-glow-red::after {
   @include after-element;
@@ -59,6 +61,7 @@ button.border-glow-red:hover::after {
 
 .border-glow-orange {
   @include border-glow-orange;
+  border-radius: $border-radius;
 }
 button.border-glow-orange::after {
   @include after-element;
@@ -73,6 +76,7 @@ button.border-glow-orange:hover::after {
 
 .border-glow-pink {
   @include border-glow-pink;
+  border-radius: $border-radius;
 }
 button.border-glow-pink::after {
   @include after-element;
@@ -87,6 +91,7 @@ button.border-glow-pink:hover::after {
 
 .border-glow-green {
   @include border-glow-green;
+  border-radius: $border-radius;
 }
 button.border-glow-green::after {
   @include after-element;
@@ -101,6 +106,7 @@ button.border-glow-green:hover::after {
 
 .border-glow-yellow {
   @include border-glow-yellow;
+  border-radius: $border-radius;
 }
 button.border-glow-yellow::after {
   @include after-element;

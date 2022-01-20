@@ -3,12 +3,14 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import {
   TimeStampObject,
@@ -31,7 +33,7 @@ import {
   templateUrl: './control-actions.component.html',
   styleUrls: ['./control-actions.component.scss'],
 })
-export class ControlActionsComponent implements OnInit, OnChanges {
+export class ControlActionsComponent implements OnInit, OnChanges, OnDestroy {
   @Input() timeUpdateObject?: TimeUpdateObject;
   @Output() pauseAudio = new EventEmitter<boolean>();
   @Output() playAudio = new EventEmitter<boolean>();
@@ -46,6 +48,8 @@ export class ControlActionsComponent implements OnInit, OnChanges {
   timestampTitle?: string;
   transitionTime: string = '0.2';
 
+  subs: Subscription[] = [];
+
   constructor(private store: Store) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -57,12 +61,20 @@ export class ControlActionsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.store
-      .pipe(select(selectSelectedScene))
-      .pipe(distinctUntilChanged())
-      .subscribe((selectedScene: Scene | undefined) => {
-        this.selectedScene = selectedScene;
-      });
+    this.subs.push(
+      this.store
+        .pipe(select(selectSelectedScene))
+        .pipe(distinctUntilChanged())
+        .subscribe((selectedScene: Scene | undefined) => {
+          this.selectedScene = selectedScene;
+        })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subs.forEach((s: Subscription) => {
+      s.unsubscribe();
+    });
   }
 
   startCreateTimeStampClick() {
@@ -75,6 +87,7 @@ export class ControlActionsComponent implements OnInit, OnChanges {
     } else {
       this.playAudio.emit(true);
     }
+    this.resetForm();
   }
 
   resetForm() {
