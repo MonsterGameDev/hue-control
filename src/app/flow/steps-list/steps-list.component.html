@@ -1,0 +1,13 @@
+<div class="flow-container">
+  <div class="steps-list" *ngIf="(steps$ | async)?.length">
+    <div class="step-item border-glow-pink" *ngFor="let step of steps$ | async">
+      <app-step-item [step]="step"></app-step-item>
+    </div>
+  </div>
+  {{ (steps$ | async)?.length }}
+  <div class="no-content text-glow-red" *ngIf="!(steps$ | async)?.length">
+    No steps added yet
+  </div>
+</div>
+
+<button (click)="saveblob()"></button>
