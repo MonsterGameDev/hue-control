@@ -34,6 +34,9 @@ import { domainReducer } from './+state/hue-domain/hue-domain.reducer';
 import { DomainEffects } from './+state/hue-domain/hue-domain.effects';
 import { GroupsEffects } from './+state/groups/groups.effects';
 import { ScenesEffect } from './+state/scenes/scenes.effects';
+import { StepsListComponent } from './flow/steps-list/steps-list.component';
+import { StepItemComponent } from './flow/step-item/step-item.component';
+import { TransitionTimeInSecondsPipe } from './pipes/time-stamp.pipe';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import { ScenesEffect } from './+state/scenes/scenes.effects';
     AboutComponent,
     CardComponent,
     ControlActionsComponent,
+    StepsListComponent,
+    StepItemComponent,
+    TransitionTimeInSecondsPipe,
   ],
   imports: [
     BrowserModule,
