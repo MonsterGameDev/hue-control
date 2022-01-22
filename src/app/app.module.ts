@@ -37,6 +37,7 @@ import { ScenesEffect } from './+state/scenes/scenes.effects';
 import { StepsListComponent } from './flow/steps-list/steps-list.component';
 import { StepItemComponent } from './flow/step-item/step-item.component';
 import { TransitionTimeInSecondsPipe } from './pipes/time-stamp.pipe';
+import { SaveAndLoadFlowComponent } from './save-and-load-flow/save-and-load-flow.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { TransitionTimeInSecondsPipe } from './pipes/time-stamp.pipe';
     StepsListComponent,
     StepItemComponent,
     TransitionTimeInSecondsPipe,
+    SaveAndLoadFlowComponent,
   ],
   imports: [
     BrowserModule,
