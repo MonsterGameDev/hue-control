@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OverviewComponent } from './overview/overview.component';
 import { PlayerComponent } from './player/player.component';
+import { SaveAndLoadFlowComponent } from './save-and-load-flow/save-and-load-flow.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,12 +16,13 @@ const routes: Routes = [
   { path: 'overview', component: OverviewComponent },
   { path: 'guide', component: GuideComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'saveandload', component: SaveAndLoadFlowComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

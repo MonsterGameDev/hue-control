@@ -85,6 +85,19 @@
             About
           </button>
         </li>
+        <li
+          [routerLinkActive]="['menu-link-active']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="menu-item"
+        >
+          <button
+            routerLink="/saveandload"
+            class="btn border-glow-blue text-glow-blue"
+            style="margin: 10px"
+          >
+            Save and Load
+          </button>
+        </li>
       </ul>
     </div>
   </div>
