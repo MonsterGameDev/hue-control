@@ -3,8 +3,46 @@
     <button class="btn border-glow-pink text-glow-pink">View</button>
     <button class="btn border-glow-orange text-glow-orange">Load</button>
   </div>
+
   <div class="content border-glow-blue">
-    <div class="falaffel btn border-glow-red text-glow-red">...</div>
+    <div class="navigation">
+      <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+
+      <label for="navi-toggle" class="navigation__button text-glow-pink">
+        <span class="navigation__icon--open">
+          <fa-icon [icon]="faBars"></fa-icon>
+        </span>
+        <span class="navigation__icon--close">
+          <fa-icon [icon]="faTimes" class="text-glow-pink"></fa-icon>
+        </span>
+      </label>
+
+      <!-- <div class="navigation__background">&nbsp;</div>-->
+
+      <nav class="navigation__nav border-glow-pink">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a href="#" class="navigation__link text-glow-yellow"
+              >Save to Local Storage</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link text-glow-yellow"
+              >Save to File</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link text-glow-yellow"
+              >Copy to Clipboard</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    
+
+    <!-- <div class="falaffel btn border-glow-red text-glow-red">...</div> -->
 
     <div class="field-group">
       <app-title-field [flowTitle]="flowTitle"></app-title-field>
