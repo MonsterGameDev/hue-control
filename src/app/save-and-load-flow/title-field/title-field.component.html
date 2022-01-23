@@ -1,0 +1,28 @@
+<div class="edit-title-container" *ngIf="isEdit">
+  <div class="field-group">
+    <input
+      autocomplete="false"
+      type="text"
+      id="title-field"
+      class="edit-title border-glow-green text-glow-yellow"
+      [(ngModel)]="flowTitle"
+    />
+  </div>
+  <button
+    class="btn border-glow-green text-glow-green"
+    (click)="saveTitle()"
+    [disabled]="flowTitle === 'Not Set'"
+  >
+    Save
+  </button>
+  <button class="btn border-glow-green text-glow-green" (click)="cancel()">
+    Cancel
+  </button>
+</div>
+<div class="edit-title-container text-glow-green" *ngIf="!isEdit">
+  <div class="label text-glow-blue">FlowTitle:</div>
+  <div class="flow-title">{{ flowTitle }}</div>
+  <div class="edit-icon text-glow-blue">
+    <fa-icon [icon]="faEdit" (click)="edit()"></fa-icon>
+  </div>
+</div>

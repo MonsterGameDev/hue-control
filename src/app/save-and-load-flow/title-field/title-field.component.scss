@@ -1,0 +1,29 @@
+@import "variables";
+@import "mixins";
+@import "components";
+@import "animations";
+
+.edit-title-container {
+  display: flex;
+  font-size: 28px;
+
+  .field-group {
+    input {
+      background: transparent;
+      caret-color: $pink-dark;
+      font-size: 28px;
+      padding: 3px;
+      border-radius: 10px;
+      margin-right: 5px;
+    }
+  }
+  button {
+    font-size: 12px;
+    height: 43px;
+    margin-right: 5px;
+  }
+
+  .flow-title {
+    margin: 0 105px 0 20px;
+  }
+}

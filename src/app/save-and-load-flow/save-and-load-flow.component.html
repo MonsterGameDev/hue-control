@@ -1,7 +1,16 @@
 <div class="save-and-load-container">
-  <div class="content">
-    <div class="header"></div>
-    <div class="save" *ngIf="!loading"></div>
-    <div class="load" *ngIf="loading"></div>
+  <div class="action-row border-glow-blue">
+    <button class="btn border-glow-pink text-glow-pink">View</button>
+    <button class="btn border-glow-orange text-glow-orange">Load</button>
+  </div>
+  <div class="content border-glow-blue">
+    <div class="falaffel btn border-glow-red text-glow-red">...</div>
+
+    <div class="field-group">
+      <app-title-field [flowTitle]="flowTitle"></app-title-field>
+    </div>
+    <div class="json">
+      {{ flow | json }}
+    </div>
   </div>
 </div>

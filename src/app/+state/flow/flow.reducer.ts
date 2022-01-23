@@ -58,6 +58,15 @@ export const flowReducer = createReducer(
         steps: [...state.flow.steps, action.payload],
       },
     };
+  }),
+  on(flowActions.setFlowTitleAction, (state, action) => {
+    return {
+      ...state,
+      flow: {
+        ...state.flow,
+        projectName: action.payload,
+      },
+    };
   })
   // on(flowActions.deleteStepAction, (state, action) => {
   //   return {

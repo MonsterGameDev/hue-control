@@ -38,6 +38,9 @@ import { StepsListComponent } from './flow/steps-list/steps-list.component';
 import { StepItemComponent } from './flow/step-item/step-item.component';
 import { TransitionTimeInSecondsPipe } from './pipes/time-stamp.pipe';
 import { SaveAndLoadFlowComponent } from './save-and-load-flow/save-and-load-flow.component';
+import { TitleFieldComponent } from './save-and-load-flow/title-field/title-field.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +66,7 @@ import { SaveAndLoadFlowComponent } from './save-and-load-flow/save-and-load-flo
     StepItemComponent,
     TransitionTimeInSecondsPipe,
     SaveAndLoadFlowComponent,
+    TitleFieldComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +74,7 @@ import { SaveAndLoadFlowComponent } from './save-and-load-flow/save-and-load-flo
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     StoreModule.forRoot(
       {
         lightsslice: lightsReducer,
@@ -85,6 +90,7 @@ import { SaveAndLoadFlowComponent } from './save-and-load-flow/save-and-load-flo
       maxAge: 25,
       logOnly: environment.production,
     }),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
