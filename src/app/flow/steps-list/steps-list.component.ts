@@ -21,6 +21,11 @@ export class StepsListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subs.push(this.flow$.subscribe((data) => (this.flow = data.flow)));
+    this.steps$.subscribe((steps: Step[]) => {
+      this.steps = steps
+        .slice()
+        .sort((a, b) => (a.timeStamp > b.timeStamp ? 1 : -1));
+    });
   }
 
   ngOnDestroy(): void {

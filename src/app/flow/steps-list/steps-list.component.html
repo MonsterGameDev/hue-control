@@ -1,6 +1,6 @@
 <div class="flow-container">
-  <div class="steps-list" *ngIf="(steps$ | async)?.length">
-    <div class="step-item border-glow-pink" *ngFor="let step of steps$ | async">
+  <div class="steps-list" *ngIf="steps.length">
+    <div class="step-item border-glow-pink" *ngFor="let step of steps">
       <app-step-item [step]="step"></app-step-item>
     </div>
   </div>

@@ -2,12 +2,23 @@
 @import "mixins";
 @import "components";
 
+@import "variables";
+
 .step-container {
+  position: relative;
   .header {
     font-size: 24px;
   }
   .value {
     font-size: 14px;
-   
+  }
+  .btn-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    font-size: 16px;
+    color: $red-dark;
+    cursor: pointer;
   }
 }

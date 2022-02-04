@@ -1,54 +1,94 @@
 <div class="save-and-load-container">
   <div class="action-row border-glow-blue">
-    <button class="btn border-glow-pink text-glow-pink">View</button>
-    <button class="btn border-glow-orange text-glow-orange">Load</button>
+    <button class="btn border-glow-pink text-glow-pink" (click)="showSave()">
+      View
+    </button>
+    <button
+      class="btn border-glow-orange text-glow-orange"
+      (click)="showLoad()"
+    >
+      Load
+    </button>
   </div>
 
-  <div class="content border-glow-blue">
-    <div class="navigation">
-      <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+  <div class="content border-glow-blue" *ngIf="showSaveSection">
+    <div class="save-container" *ngIf="flow?.steps?.length">
+      <div class="navigation">
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
 
-      <label for="navi-toggle" class="navigation__button text-glow-pink">
-        <span class="navigation__icon--open">
-          <fa-icon [icon]="faBars"></fa-icon>
-        </span>
-        <span class="navigation__icon--close">
-          <fa-icon [icon]="faTimes" class="text-glow-pink"></fa-icon>
-        </span>
-      </label>
+        <label for="navi-toggle" class="navigation__button text-glow-pink">
+          <span class="navigation__icon--open">
+            <fa-icon [icon]="faBars"></fa-icon>
+          </span>
+          <span class="navigation__icon--close">
+            <fa-icon [icon]="faTimes" class="text-glow-pink"></fa-icon>
+          </span>
+        </label>
 
-      <!-- <div class="navigation__background">&nbsp;</div>-->
+        <nav class="navigation__nav border-glow-pink">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a
+                class="navigation__link text-glow-yellow"
+                (click)="saveToLocalStorage()"
+                >Save to Local Storage</a
+              >
+            </li>
+            <li class="navigation__item">
+              <a
+                class="navigation__link text-glow-yellow"
+                (click)="saveToFile()"
+                >Save to File</a
+              >
+            </li>
+            <li class="navigation__item">
+              <a
+                class="navigation__link text-glow-yellow"
+                (click)="copyToClipBoard()"
+                >Copy to Clipboard</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
 
-      <nav class="navigation__nav border-glow-pink">
-        <ul class="navigation__list">
-          <li class="navigation__item">
-            <a href="#" class="navigation__link text-glow-yellow"
-              >Save to Local Storage</a
-            >
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link text-glow-yellow"
-              >Save to File</a
-            >
-          </li>
-          <li class="navigation__item">
-            <a href="#" class="navigation__link text-glow-yellow"
-              >Copy to Clipboard</a
-            >
-          </li>
-        </ul>
-      </nav>
+      <div class="field-group">
+        <app-title-field [flowTitle]="flowTitle"></app-title-field>
+      </div>
+
+      <div class="json">
+        <pre>{{ flow | json }}</pre>
+      </div>
     </div>
-
-    
-
-    <!-- <div class="falaffel btn border-glow-red text-glow-red">...</div> -->
-
-    <div class="field-group">
-      <app-title-field [flowTitle]="flowTitle"></app-title-field>
+    <div class="no-content text-glow-pink" *ngIf="!flow?.steps?.length">
+      No Steps Found
     </div>
-    <div class="json">
-      {{ flow | json }}
+  </div>
+
+  <div class="content-load" *ngIf="!showSaveSection">
+    <div class="local-storage border-glow-blue">
+      <div
+        *ngFor="let key of flowsInLocalStorage"
+        class="key text-glow-orange"
+        (click)="getItem(key)"
+      >
+        {{ key }}
+      </div>
+    </div>
+    <div class="json-upload-form border-glow-blue">
+      <div class="text-section text-glow-orange">
+        <div class="header">Load Flow</div>
+        <div class="body">
+          You can select from Local Storage og paste JSON directly below.
+        </div>
+      </div>
+      <div class="json-data" contentEditable [innerHtml]="flowJSON"></div>
+      <button
+        class="btn border-glow-orange text-glow-orange"
+        (click)="loadFlow()"
+      >
+        Save
+      </button>
     </div>
   </div>
 </div>

@@ -1,60 +1,145 @@
-@import "mixins";
-@import "animations";
 @import "variables";
+@import "mixins";
 @import "components";
 
-@import url("https://fonts.googleapis.com/css2?family=The+Nautigal&family=Vujahday+Script&display=swap");
+.player-container {
+  width: 100%;
+  height: 100%;
 
-.play-container {
-  @include display-card;
-  animation: horizontal-reveal 0.5s 0.3s ease-in-out backwards;
+  display: flex;
+  flex-direction: column;
 
-  audio {
+  .player-area {
     width: 100%;
-  }
-  h1 {
-    color: $pink-dark
+    height: 9%;
+    margin-bottom: 10px;
   }
 
   .content {
     width: 100%;
-    height: 100%;
+    height: 91%;
 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
 
-    .play-button {
-      font-size: 60px;
-      color: lightgrey;
-      cursor: pointer;
+    .card {
+      width: 32.5%;
+      height: 100%;
+
+      app-card,
+      app-control-actions {
+        height: 100%;
+        .list-slot {
+          height: 100%;
+          overflow-y: scroll;
+          padding-right: 10px;
+        }
+        /* width */
+        .list-slot::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        /* Track */
+        .list-slot::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px grey;
+          border-radius: 10px;
+        }
+
+        /* Handle */
+        .list-slot::-webkit-scrollbar-thumb {
+          background: lightgrey;
+          border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        .list-slot::-webkit-scrollbar-thumb:hover {
+          background: yellow;
+        }
+      }
     }
-
-    // .sub-header {
-    //   font-size: 40px;
-    //   font-weight: bolder;
-    //   color: lightblue;
-    //   text-transform: uppercase;
-    //   font-family: "Vujahday Script", cursive;
-
-    //   background: linear-gradient(
-    //     42deg,
-    //     #246655,
-    //     #7d250a,
-    //     #2014d3,
-    //     #7c0a7d,
-    //     #d1d516,
-    //     rgb(230, 6, 181)
-    //   );
-    //   background-size: 1000% 1000%;
-    //   background-clip: text;
-    //   -webkit-text-fill-color: transparent;
-
-    //   animation: animated-gradient 30s ease infinite;
-    // }
-    // }
   }
 }
+
+// Timestamp
+.select-time-stamp {
+  height: 30%;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .counter {
+    @media (max-width: 2600px) {
+      font-size: 90px;
+    }
+    @media (max-width: 1600px) {
+      font-size: 70px;
+    }
+
+    @media (max-width: 1300px) {
+      font-size: 60px;
+    }
+    @media (max-width: 1000px) {
+      font-size: 45px;
+    }
+  }
+  @media (max-width: 700px) {
+    font-size: 32px;
+  }
+}
+
+// .play-container {
+//   @include display-card;
+//   animation: horizontal-reveal 0.5s 0.3s ease-in-out backwards;
+
+//   audio {
+//     width: 100%;
+//   }
+//   h1 {
+//     color: $pink-dark
+//   }
+
+//   .content {
+//     width: 100%;
+//     height: 100%;
+
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+
+//     .play-button {
+//       font-size: 60px;
+//       color: lightgrey;
+//       cursor: pointer;
+//     }
+
+// .sub-header {
+//   font-size: 40px;
+//   font-weight: bolder;
+//   color: lightblue;
+//   text-transform: uppercase;
+//   font-family: "Vujahday Script", cursive;
+
+//   background: linear-gradient(
+//     42deg,
+//     #246655,
+//     #7d250a,
+//     #2014d3,
+//     #7c0a7d,
+//     #d1d516,
+//     rgb(230, 6, 181)
+//   );
+//   background-size: 1000% 1000%;
+//   background-clip: text;
+//   -webkit-text-fill-color: transparent;
+
+//   animation: animated-gradient 30s ease infinite;
+// }
+//     // }
+//   }
+// }
 
 // @keyframes animated-gradient {
 //   0% {

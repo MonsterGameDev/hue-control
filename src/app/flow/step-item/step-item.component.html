@@ -1,4 +1,7 @@
 <div class="step-container text-glow-yellow">
+  <div class="btn-delete" (click)="deleteStep()">
+    <fa-icon [icon]="faMinusCircle"></fa-icon>
+  </div>
   <div class="value">
     {{ step?.timeStamp }}
   </div>

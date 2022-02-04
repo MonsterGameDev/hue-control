@@ -30,11 +30,69 @@
     .field-group {
       height: 10%;
       padding: 15px;
+      width: 100%;
     }
     .json {
-      height: 89%;
-      padding: 15%;
+      font-size: 14px;
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      height: 80%;
       color: white;
+      border: 1px solid white;
+    }
+  }
+  .no-content {
+    font-size: 32px;
+    width: 100%;
+    height: 100%;
+    padding-top: 30%;
+    text-align: center;
+  }
+
+  .content-load {
+    height: 85%;
+    margin: 0 15px 15px 15px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    .local-storage {
+      width: 30%;
+      height: 100%;
+      padding: 5px;
+
+      .key {
+        margin: 10px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+    .json-upload-form {
+      width: 68%;
+      padding: 10px;
+
+      .text-section {
+        margin-bottom: 15px;
+        .header {
+          font-size: 24px;
+        }
+
+        .body {
+          font-size: 16px;
+        }
+      }
+      .json-data {
+        height: 70%;
+        width: 100%;
+        border: 1px solid white;
+        margin-bottom: 15px;
+        display: inline-block;
+        color: white;
+      }
+      button {
+        font-size: 16px;
+      }
     }
   }
 }

@@ -67,16 +67,20 @@ export const flowReducer = createReducer(
         projectName: action.payload,
       },
     };
+  }),
+  on(flowActions.deleteStepAction, (state, action) => {
+    return {
+      ...state,
+      flow: {
+        ...state.flow,
+        steps: state.flow.steps.filter(
+          (step) =>
+            !(
+              step.sceneId === action.payload.sceneId &&
+              step.timeStamp === action.payload.timeStamp
+            )
+        ),
+      },
+    };
   })
-  // on(flowActions.deleteStepAction, (state, action) => {
-  //   return {
-  //     ...state,
-  //     flow: {
-  //       ...state.flow,
-  //       steps: state.flow.steps.filter(
-  //         (step) => step.scene.id !== action.payload
-  //       ),
-  //     },
-  //   };
-  // })
 );

@@ -8,7 +8,6 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
@@ -24,7 +23,6 @@ import {
 } from 'src/app/+state/scenes/scenes.actions';
 import { Scene } from 'src/app/+state/scenes/scenes.interfaces';
 import {
-  selectAllScenes,
   selectSelectedScene,
 } from 'src/app/+state/scenes/scenes.selectors';
 
@@ -123,15 +121,13 @@ export class ControlActionsComponent implements OnInit, OnChanges, OnDestroy {
 
   isValid(): boolean {
     if (this.transitionTime === '') this.transitionTime = '0.2';
-
     return (
       !!this.formattedTimeStamp &&
       this.formattedTimeStamp !== '' &&
       !!this.timestampTitle &&
       this.timestampTitle !== '' &&
       !!this.selectedScene &&
-      !!this.transitionTime &&
-      parseInt(this.transitionTime!) >= 0
+      parseInt(this.transitionTime) >= 0
     );
   }
 }

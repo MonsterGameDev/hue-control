@@ -23,7 +23,7 @@ export const addStepAction = createAction(
 );
 export const deleteStepAction = createAction(
   '[FLOW] - Delete Step',
-  props<{ payload: string }>()
+  props<{ payload: Step }>()
 );
 
 export const setFlowTitleAction = createAction(

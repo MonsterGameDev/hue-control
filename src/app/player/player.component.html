@@ -1,4 +1,4 @@
-<div class="play-container">
+<!-- <div class="play-container">
   <audio #audio controls>
     <source src="assets/new-try.mp3" />
   </audio>
@@ -8,5 +8,32 @@
   </h1>
   <!-- <div class="content">
     <div class="play-button" (click)="startFlow()">PLAY</div>
-  </div> -->
+  </div>
+</div> -->
+<div class="player-container">
+  <div class="player-area">
+    <app-edit
+      (progressEmitter)="timeUpdateEvent($event)"
+      [pause]="pause"
+      [play]="play"
+    ></app-edit>
+  </div>
+  <div class="content">
+    <div class="card">
+      <app-card>
+        <div class="select-time-stamp border-glow-green">
+          <div class="counter text-glow-green">
+            {{ formattedTimeStamp }}
+          </div>
+        </div>
+      </app-card>
+    </div>
+    <div class="card">
+      <app-card>
+        <div class="list-slot">
+          <app-steps-list></app-steps-list>
+        </div>
+      </app-card>
+    </div>
+  </div>
 </div>

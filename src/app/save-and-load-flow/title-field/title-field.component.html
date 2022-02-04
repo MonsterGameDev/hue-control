@@ -19,10 +19,10 @@
     Cancel
   </button>
 </div>
-<div class="edit-title-container text-glow-green" *ngIf="!isEdit">
-  <div class="label text-glow-blue">FlowTitle:</div>
-  <div class="flow-title">{{ flowTitle }}</div>
-  <div class="edit-icon text-glow-blue">
+<div class="edit-title-container text-glow-pink" *ngIf="!isEdit">
+  <div class="label">FlowTitle:</div>
+  <div class="flow-title text-glow-green">{{ flowTitle }}</div>
+  <div class="edit-icon">
     <fa-icon [icon]="faEdit" (click)="edit()"></fa-icon>
   </div>
 </div>

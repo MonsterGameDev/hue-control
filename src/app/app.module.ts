@@ -16,7 +16,7 @@ import { LightItemComponent } from './lights/light-item/light-item.component';
 import { LightsListComponent } from './lights/lights-list/lights-list.component';
 import { ScenesListComponent } from './scenes/scenes-list/scenes-list.component';
 import { SceneItemComponent } from './scenes/scene-item/scene-item.component';
-import { PlayerComponent } from './audio/player/player.component';
+import { PlayerComponent } from './player/player.component';
 import { EditComponent } from './audio/edit/edit.component';
 import { MenuComponent } from './menu/menu.component';
 import { CreateComponent } from './create/create.component';
@@ -40,7 +40,6 @@ import { TransitionTimeInSecondsPipe } from './pipes/time-stamp.pipe';
 import { SaveAndLoadFlowComponent } from './save-and-load-flow/save-and-load-flow.component';
 import { TitleFieldComponent } from './save-and-load-flow/title-field/title-field.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 
 @NgModule({
   declarations: [
