@@ -30,7 +30,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.flow$.subscribe((data: FlowState): void => {
       this.flow = data;
       this.steps = data.flow.steps;
-      console.log(this.steps);
+      // console.log(this.steps);
     });
   }
 
@@ -64,18 +64,15 @@ export class PlayerComponent implements OnInit, OnDestroy {
     if (activeStep) {
       console.log('I found one', activeStep);
       const payload: GroupActionUpdate = {
-                  id: activeStep.groupId,
-                  body: {
-                    scene: activeStep.sceneId,
-                    transitiontime: activeStep.transitionTime,
-                  },
-                };
-                console.log('send at ' + this.formattedTimeStamp + ': ', payload);
+        id: activeStep.groupId,
+        body: {
+          scene: activeStep.sceneId,
+          transitiontime: activeStep.transitionTime,
+        },
+      };
+      console.log('send at ' + this.formattedTimeStamp + ': ', payload);
 
-                this.store.dispatch(updateGroupAction({ payload }));
-
-
-
+      this.store.dispatch(updateGroupAction({ payload }));
     }
   }
 }

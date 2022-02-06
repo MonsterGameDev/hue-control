@@ -15,7 +15,7 @@ export class GroupsListComponent implements OnInit {
   ngOnInit(): void {
 
     //this.store.select(selectGroups).subscribe(data=> console.log(data));
-    this.store.pipe(select(selectGroups)).subscribe(data=> console.log(data));
+    //this.store.pipe(select(selectGroups)).subscribe(data=> console.log(data));
 
   }
 

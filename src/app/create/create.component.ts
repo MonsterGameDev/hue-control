@@ -42,8 +42,6 @@ export class CreateComponent implements OnInit {
   }
 
   handleShowScenes(e: boolean) {
-    console.log(e);
-
     this.readyToPickScene = e;
   }
 }
